@@ -15,9 +15,12 @@ full_depth = 55
 def index():
     
     mybasket.update_amount()
+    mybasket.show_amount()
     amount = mybasket.amount
-    if(amount <= -5):
+    percent = mybasket.percent
+    if(amount <= -5 or percent <= -5):
         amount = 0
+        percent = 0
     mybasket.check_laundry()
     mybasket.check_add()
     mybasket.check_amount()
@@ -44,7 +47,7 @@ def index():
     
 
     #render to direct to html page and the variable connection
-    return render_template('index.html', amount=amount, time=time, cycle=cycle, level=level )
+    return render_template('index.html', percent=percent, time=time, cycle=cycle, level=level )
 
 
 @app.route('/minyu')
@@ -83,11 +86,13 @@ class Basket:
 
     #cost 5 seconds
     def update_amount(self):
+       
         self.amount = getstable()
-        self.percent  = self.amount*100/full_depth
+        self.percent  = round(self.amount*100/full_depth)
 
     def show_amount(self):
         print(self.amount)
+        print(self.percent)
 
     #also called update_level
     def check_amount(self):

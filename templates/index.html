@@ -22,7 +22,7 @@
   			box-shadow: 1px 3px 4px rgba(0, 0, 0, 0.1);
   			padding: 10px;
   			text-align: center;
-width: 15rem;
+width: 21rem;
     height: 21rem;
   		}
   		#columns {
@@ -71,7 +71,7 @@ margin-top: 3rem;
 	 </div>
 	<img class="class-img" src="{{ url_for('static',filename='calendar.png')}}" alt="calendar" height="139" width="181"></div> </div>
   <div class="card"><div class="card-inside"> <div>
- <h4 style="color: rgb(81, 81, 81); font-weight: 500;  margin-bottom: -10px;">Amount of clothes in the basket</h4> <h1 style="color: rgb(16, 115, 147); font-size: 250%;font-weight: 500;">{{ amount }}<span style="font-size: 40%">%</span></h1>
+ <h4 style="color: rgb(81, 81, 81); font-weight: 500;  margin-bottom: -10px;">Amount of clothes in the basket</h4> <h1 style="color: rgb(16, 115, 147); font-size: 250%;font-weight: 500;">{{ percent }}<span style="font-size: 40%">%</span></h1>
 </div><img class="class-img" src="{{ url_for('static',filename='clothes.png')}}" alt="calendar" height="138" width="164"></div> </div>
   <div class="card"><div class="card-inside"><div>
  <h4 style="color: rgb(81, 81, 81); font-weight: 500;  margin-bottom: -10px;">Water Consumption for this month</h4> <h1 style="color: rgb(16, 115, 147); font-size: 250%;font-weight: 500;">{{ cycle }}<span style="font-size: 40%">litres</span></h1>
