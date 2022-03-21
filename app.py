@@ -131,7 +131,7 @@ class Basket:
 
     #check whether user add something into the basket
     def check_add(self):
-        if (self.level == 0 and not self.check_empty()):
+        if (self.level == 0 and self.amount >= 5):
             self.time_start = time.time()
 
     #update the time they use 
