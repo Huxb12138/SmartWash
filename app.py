@@ -9,7 +9,7 @@ sensor = DistanceSensor(echo=17, trigger=4)
 
 #setup flask
 app = Flask(__name__)
-
+full_depth = 55
 #root path is set to run py code
 @app.route('/')
 def index():
@@ -56,15 +56,15 @@ def minyu():
 def getstable():
     while True:
         list = []
-        list.append(55 - int(sensor.distance * 100))
+        list.append(full_depth - int(sensor.distance * 100))
         time.sleep(1)
-        list.append(55 - int(sensor.distance * 100))
+        list.append(full_depth - int(sensor.distance * 100))
         time.sleep(1)
-        list.append(55 - int(sensor.distance * 100))
+        list.append(full_depth - int(sensor.distance * 100))
         time.sleep(1)
-        list.append(55 - int(sensor.distance * 100))
+        list.append(full_depth - int(sensor.distance * 100))
         time.sleep(1)
-        list.append(55 - int(sensor.distance * 100))
+        list.append(full_depth - int(sensor.distance * 100))
 
         if len(list) == 5:
             medvalue = np.average(list)
@@ -79,10 +79,12 @@ class Basket:
     time_start = 0
     time_end = 0
     time = 0
+    percent = 0
 
     #cost 5 seconds
     def update_amount(self):
         self.amount = getstable()
+        self.percent  = self.amount*100/full_depth
 
     def show_amount(self):
         print(self.amount)
@@ -112,7 +114,7 @@ class Basket:
 
     #check whether user did laundry
     def check_laundry(self):
-        if (self.amount == 0 and self.level != 0):
+        if (self.check_empty() and self.level != 0):
             self.cycle = self.cycle + 1
             self.time_end = time.time()
             print('Just done the laundry')                                            
@@ -124,7 +126,7 @@ class Basket:
 
     #check whether user add something into the basket
     def check_add(self):
-        if (self.level == 0 and self.check_empty()):
+        if (self.level == 0 and not self.check_empty()):
             self.time_start = time.time()
 
     #update the time they use 
