@@ -13,12 +13,14 @@ full_depth = 41
 #root path is set to run py code
 @app.route('/')
 def index():
-    
+    mybasket.check_time()
+    day = round(mybasket.time / 15)
     mybasket.update_amount()
     mybasket.show_amount()
+    mybasket.check_laundry()
     amount = mybasket.amount
     percent = mybasket.percent
-    if(amount <= -5 or percent <= -5):
+    if(percent <= 5 and percent >= -5):
         amount = 0
         percent = 0
     mybasket.check_add()
@@ -46,7 +48,7 @@ def index():
     
 
     #render to direct to html page and the variable connection
-    return render_template('index.html', percent=percent, time=time, cycle=cycle, level=level )
+    return render_template('index.html', percent=percent, day=day, cycle=cycle, level=level )
 
 
 @app.route('/minyu')
@@ -145,7 +147,7 @@ class Basket:
             if (self.time >= 30):
                 print("Long time no laundry")
             if (self.time_end != 0):
-                self.time = self.time_end - self.time_start
+                self.time = 0
                 self.time_end = 0
                 self.time_start = 0
     
