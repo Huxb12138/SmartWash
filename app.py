@@ -23,6 +23,7 @@ def index():
     if(percent <= 5 and percent >= -5):
         amount = 0
         percent = 0
+    mybasket.check_laundry()
     mybasket.check_add()
     mybasket.check_amount()
     mybasket.check_time()
