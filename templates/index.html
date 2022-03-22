@@ -14,6 +14,7 @@
   			font-family: 'Helvetica';
   		}
 #header {
+	margin-top: 50px;
 	margin-bottom :-25px;
 }
   		.card{
@@ -22,25 +23,26 @@
   			box-shadow: 1px 3px 4px rgba(0, 0, 0, 0.1);
   			padding: 10px;
   			text-align: center;
-width: 21rem;
-    height: 21rem;
+			margin-right: 85px;
+width: 400px;
+    height: 450px;
   		}
   		#columns {
   			border-collapse: separate;
   			border-spacing: 1em .5em;
   		}
 .flex-container {
-margin-top: 1rem;
-  display: flex;
-flex-wrap: wrap;
-justify-content: space-between;
+margin-top: 5rem;
+display: flex;
+flex-wrap: nowrap;
+justify-content: flex-start;
 }
 .card-inside {
     padding-left: 19px;
     padding-right: 18px;
 }
 .class-img {
-margin-top: 3rem;
+margin-top: 5rem;
 }
 .flex-container > div {
 
@@ -55,26 +57,26 @@ margin-top: 3rem;
   		<table id="header">
   			<tr>
   				<td>
-  					<h1 style ="color: rgb(139, 139, 139); width: 250px; height: 20px; padding-left: 5px;font-weight: 500;">Laundry Status </h1>
+  					<h1 style ="color: rgb(139, 139, 139); width: 500px; height: 40px; padding-left: 5px;font-weight: 500;font-size: 40px;">Laundry Status </h1>
   				</td>
-  				<td style="padding-left: 617px"><i class="fa-solid fa-circle-info" style="padding-top: 35px; color: rgb(105,105,105)"></i><p style="font-size: 80%;margin-top: 1px;margin-left: -1px;">Info</p></td>
+  				<td style="padding-left: 900px"><i class="fa-solid fa-circle-info" style="padding-top: 35px; color: rgb(105,105,105)"></i><p style="font-size: 120%;margin-top: 1px;margin-left: -5px;">Info</p></td>
   			</tr>
 		</table>
-	    <h2 style ="color: rgb(16, 115, 147); height: 28px; padding-left: 10px;font-weight: 500;">{{ level }}</h2>
+	    <h2 style ="color: rgb(16, 115, 147); height: 28px; padding-left: 10px;font-weight: 500;font-size: 30px;">{{ level }}</h2>
 		
-	    <p style= "color: rgb(105, 105, 105); width: 640px; height: 60px; padding-left: 10px;font-size: 14px;"> It is most efficient to do your laundry when the basket is at 75% capacity as this would reduce your monthly water consumption and ensure best quality wash. Doing laundry at less than 30% basket capacity highly increases your water consumption. </p>
+	    <p style= "color: rgb(105, 105, 105); width: 640px; height: 60px; padding-left: 10px;font-size: 20px;"> It is most efficient to do your laundry when the basket is at 75% capacity as this would reduce your monthly water consumption and ensure best quality wash. Doing laundry at less than 30% basket capacity highly increases your water consumption. </p>
 <div class="flex-container">
   <div class="card">
 	<div class="card-inside">
 	<div>
-<div> <h4 style="color: rgb(81, 81, 81); font-weight: 500; margin-bottom: -10px;">Time since last laundry cycle</h4> <h1 style="color: rgb(16, 115, 147); font-size: 250%;font-weight: 500;">{{ time }}<span style="font-size: 40%">days</span></h1> </div>
+<div> <h3 style="color: rgb(81, 81, 81); font-weight: 500; margin-bottom: -10px; font-size: 24px;">Time since last laundry cycle</h3> <h1 style="color: rgb(16, 115, 147); font-size: 350%;font-weight: 500;">{{ time }}<span style="font-size: 40%">days</span></h1> </div>
 	 </div>
 	<img class="class-img" src="{{ url_for('static',filename='calendar.png')}}" alt="calendar" height="139" width="181"></div> </div>
   <div class="card"><div class="card-inside"> <div>
- <h4 style="color: rgb(81, 81, 81); font-weight: 500;  margin-bottom: -10px;">Amount of clothes in the basket</h4> <h1 style="color: rgb(16, 115, 147); font-size: 250%;font-weight: 500;">{{ percent }}<span style="font-size: 40%">%</span></h1>
+ <h3 style="color: rgb(81, 81, 81); font-weight: 500;  margin-bottom: -10px; font-size: 24px;">Amount of clothes in the basket</h3> <h1 style="color: rgb(16, 115, 147); font-size: 350%;font-weight: 500;">{{ percent }}<span style="font-size: 40%">%</span></h1>
 </div><img class="class-img" src="{{ url_for('static',filename='clothes.png')}}" alt="calendar" height="138" width="164"></div> </div>
   <div class="card"><div class="card-inside"><div>
- <h4 style="color: rgb(81, 81, 81); font-weight: 500;  margin-bottom: -10px;">Water Consumption for this month</h4> <h1 style="color: rgb(16, 115, 147); font-size: 250%;font-weight: 500;">{{ cycle }}<span style="font-size: 40%">litres</span></h1>
+ <h3 style="color: rgb(81, 81, 81); font-weight: 500;  margin-bottom: -10px; font-size: 24px;">Water Consumption for this month</h3> <h1 style="color: rgb(16, 115, 147); font-size: 350%;font-weight: 500;">{{ cycle }}<span style="font-size: 40%">litres</span></h1>
 </div><img class="class-img" src="{{ url_for('static',filename='water.png')}}" alt="calendar" height="134" width="196"></div>
 </div>
   	</div>
