@@ -9,7 +9,7 @@ sensor = DistanceSensor(echo=17, trigger=4)
 
 #setup flask
 app = Flask(__name__)
-full_depth = 55
+full_depth = 41
 #root path is set to run py code
 @app.route('/')
 def index():
@@ -21,7 +21,6 @@ def index():
     if(amount <= -5 or percent <= -5):
         amount = 0
         percent = 0
-    mybasket.check_laundry()
     mybasket.check_add()
     mybasket.check_amount()
     mybasket.check_time()
@@ -74,6 +73,10 @@ def getstable():
             return medvalue
         break
 
+class Time:
+
+    timestart = 0
+    timeend = 0
 
 class Basket:
     amount = 0
@@ -100,19 +103,19 @@ class Basket:
             self.level = 0
             self.time = 0
             print('it is level 0')
-        elif self.amount <= 15 and self.amount >= 5:
+        elif self.percent <= 30 and self.percent >= 5:
             self.level = 1
             print('it is level 1')
-        elif 15 < self.amount <= 35:
+        elif 30 < self.percent <= 70:
             self.level = 2
             print('it is level 2')
-        elif self.amount > 35 and self.amount <= 40:
+        elif self.percent > 70 and self.percent <= 80:
             self.level = 3
             print('it is level 3')
-        elif self.amount > 40:
+        elif self.percent > 80:
             self.level = 4
             print('it is level 4')
-        elif self.amount < -5:
+        elif self.percent < -5:
             self.level = 5
             print('Open dectected')
         return self.level
@@ -122,7 +125,8 @@ class Basket:
         if (self.check_empty() and self.level != 0):
             self.cycle = self.cycle + 1
             self.time_end = time.time()
-            print('Just done the laundry')                                            
+            print('Just done the laundry')
+            return True
 
     def check_empty(self):
         if(self.amount < 5 and self.amount > -5):
@@ -131,7 +135,7 @@ class Basket:
 
     #check whether user add something into the basket
     def check_add(self):
-        if (self.level == 0 and self.amount >= 5):
+        if (self.level == 0 and self.percent >= 5):
             self.time_start = time.time()
 
     #update the time they use 
@@ -150,6 +154,7 @@ class Basket:
 
 #generate object
 mybasket = Basket()
+recoder = Time()
 '''
 mybasket = Basket()
 #while True:
