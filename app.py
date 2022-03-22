@@ -13,7 +13,7 @@ full_depth = 41
 #root path is set to run py code
 @app.route('/')
 def index():
-    mybasket.check_time()
+    
     day = round(mybasket.time / 15)
     mybasket.update_amount()
     mybasket.show_amount()
