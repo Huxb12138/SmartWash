@@ -20,6 +20,7 @@ def index():
     mybasket.check_laundry()
     amount = mybasket.amount
     percent = mybasket.percent
+    #to avoid errors and negative percentage values when the basket is opened
     if(percent <= 5):
         amount = 0
         percent = 0
