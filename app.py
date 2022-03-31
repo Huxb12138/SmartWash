@@ -10,7 +10,7 @@ sensor = DistanceSensor(echo=17, trigger=4)
 #setup flask
 app = Flask(__name__)
 full_depth = 41
-#root path is set to run py code
+#root path is set to run python code
 @app.route('/')
 def index():
     
@@ -41,9 +41,9 @@ def index():
         level = 'Basket is open'
     #time is float, change type to int
     time =  round(mybasket.time)
-    #fomular to change cycle of lanndry to water user will use
+    #formula to calculate water consumption based on number of laundry cycles
     cycle = mybasket.cycle * 50
-    #cycle will not show up when it is int type
+    
     if(cycle == 0):
         cycle = '0'
     
@@ -57,7 +57,7 @@ def minyu():
     return "Hello minyu"
 
 
-#this function is to get stable data from sensor, by caculating the average data in 5 seconds
+#this function is to get stable data from the sensor, by caculating the average data in 5 seconds
 def getstable():
     while True:
         list = []
@@ -90,7 +90,7 @@ class Basket:
     time = 0
     percent = 0
 
-    #cost 5 seconds
+    #updates the amount every 5 seconds
     def update_amount(self):
        
         self.amount = getstable()
@@ -100,7 +100,7 @@ class Basket:
         print(self.amount)
         print(self.percent)
 
-    #also called update_level
+    #checks the amount of clothes in the basket and updates the level
     def check_amount(self):
         if self.check_empty():
             self.level = 0
@@ -123,7 +123,7 @@ class Basket:
             print('Open dectected')
         return self.level
 
-    #check whether user did laundry
+    #checks whether the user did laundry
     def check_laundry(self):
         if (self.check_empty() and self.level != 0):
             self.cycle = self.cycle + 1
@@ -136,12 +136,12 @@ class Basket:
             return True
         else: return False
 
-    #check whether user add something into the basket
+    #checks whether the user added something into the basket
     def check_add(self):
         if (self.level == 0 and self.percent >= 5):
             self.time_start = time.time()
 
-    #update the time they use 
+    #updates the time since last laundry cycle and resets it to zero once laundry is done 
     def check_time(self):
         if(self.time_start != 0):
             self.time = time.time() - self.time_start
