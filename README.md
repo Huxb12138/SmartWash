@@ -1,9 +1,9 @@
-# Smart Wash
-> A Sustainable Way to Remind You Do the Laundry
+# SmartWash
+> A smart laundry soltuion
 
 This project is a smart laundry basket that is designed to help maintain regular laundry habits and to also make the user more aware of their laundry water and energy consumption. The project is split into three hardware components:
-1. Ultrasonic Distance Sensor: calculate the amount of clothes in the basket and updates the information
-2.  Respeberry Pi: be as the sever and back-end of the web page.
+1.  Ultrasonic Distance Sensor: calculate the amount of clothes in the basket and updates the information
+2.  Respeberry Pi: as the sever and back-end of the web page.
 3.  Display screen
 
 ## Features
